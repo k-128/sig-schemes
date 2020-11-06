@@ -12,13 +12,6 @@ type KeyPair [2][512][]byte
 
 type Signature [512][]byte
 
-func main() {
-	rand.Seed(time.Now().Unix())
-	secKeyPair, pubKeyPair := GenerateKeys()
-	sig := Sign(secKeyPair, "msg")
-	fmt.Printf("valid sig: %t\n", Verify(pubKeyPair, sig))
-}
-
 func GetHash(b []byte) []byte {
 	h := sha512.New()
 	h.Write(b)
@@ -65,4 +58,11 @@ func Verify(pubKeyPair KeyPair, sig Signature) bool {
 		}
 	}
 	return true
+}
+
+func HashBasedSigSchemeTest() {
+	rand.Seed(time.Now().Unix())
+	secKeyPair, pubKeyPair := GenerateKeys()
+	sig := Sign(secKeyPair, "msg")
+	fmt.Printf("valid sig: %t\n", Verify(pubKeyPair, sig))
 }

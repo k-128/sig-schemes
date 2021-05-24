@@ -3,11 +3,7 @@
 
 <br />
 
-> Signature schemes implemented in different languages
-
-<br />
-
-- Hash based sig scheme:
+- Hash based sig scheme (Lamport sigs):
   * Py3
   * Golang
-
+  * Rust
